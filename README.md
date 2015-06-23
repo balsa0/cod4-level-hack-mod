@@ -6,7 +6,7 @@ You need a CoD4X server to run this mod:
 http://www.cod4x.me/
 
 - Set up your server to run without mod
-- Add these additional gsc files to override the server-side scripts
+- Add these additional gsc (in src/ folder) files to override the server-side scripts
 - Set up your server to run on TDM (g_gametype "war") and only on Crash (map mp_crash)
 - Enjoy your own level hack server!
 
