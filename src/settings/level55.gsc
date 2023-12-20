@@ -26,13 +26,13 @@ start_threads()
 
 	self endon("disconnect");
 	level endon( "game_ended" );
-	//Fegyverek elvÈtele
+	//Fegyverek elv√©tele
 	self takeallweapons();
 	self setClientDvar("ui_hud_hardcore",1);
 
 	self thread travel();
 	visionSetNaked( "mpOutro", 2.0 );
-	//ha j·rt m·r itt
+	//ha j√°rt m√°r itt
 	if(self getstat(3399)==123){
 		washere();
 	}
@@ -213,7 +213,7 @@ travel(){
 
 	tpoint[4] = (368,-1837,435);
 	tpoint[5] = (368,-1837,152);
-	//szˆgek
+	//sz√∂gek
 	tpoint[6] = (11,62,0);
 
 	tpoint[7] = (1774,-370,348);
@@ -247,12 +247,28 @@ travel(){
    ent delete();*/
   }
 
- ispawnang(ent){
-   while(isDefined(ent)){
+// fix error spam when player manually leaves the server
+  ispawnang(ent){
+   while(isDefined(ent) && isingame(self)){
       self SetPlayerAngles( ent.angles );
       wait 0.05;
    }
  }
+
+isingame(s)
+{
+	for ( index = 0; index < level.players.size; index++ )
+	{
+		player = level.players[index];
+		if( player == s )
+		{
+			logPrint( "true" );
+			return true;
+		}
+	}
+	logPrint( "bleh" );
+	return false;
+}
 
 giveAllXp()
 {
